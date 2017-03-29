@@ -1,44 +1,44 @@
 #ifndef _DEFINE
 #define _DEFINE
 
-//ƒ}ƒNƒ•Ï”’è‹`
+//ãƒžã‚¯ãƒ­å¤‰æ•°å®šç¾©
 
-//ƒtƒB[ƒ‹ƒhÀ•W
+//ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰åº§æ¨™
 #define F_HMAX 440
 #define F_HMIN 20
 #define F_VMAX 460
 #define F_VMIN 20
 
-//”wŒiƒXƒNƒ[ƒ‹ƒXƒs[ƒh
+//èƒŒæ™¯ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã‚¹ãƒ”ãƒ¼ãƒ‰
 #define SCROLL_SPEED 2
 
-//ƒvƒŒƒCƒ„[‰ŠúˆÊ’u
+//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼åˆæœŸä½ç½®
 #define P_INIX (F_HMAX+F_HMIN)/2
 #define P_INIY 400
-//ƒvƒŒƒCƒ„[‚Ì‘¬“x
+//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®é€Ÿåº¦
 #define P_SPD 5
 #define P_SPD_L 2
-//Ž©‹@’e‘¬“x
+//è‡ªæ©Ÿå¼¾é€Ÿåº¦
 #define PSHOT_MAX 100
 
-//“GÅ‘å”
+//æ•µæœ€å¤§æ•°
 #define E_MAX 200
-//“G’eÅ‘å”
+//æ•µå¼¾æœ€å¤§æ•°
 #define ESHOT_MAX 1000
 #define BSHOT_MAX 1000
 
-//ƒvƒŒƒCƒ„[‚Ì“–‚½‚è”»’è
+//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å½“ãŸã‚Šåˆ¤å®š
 #define P_RANGE1 0.5
 #define PSHOT_RANGE 8
-//“G‚Ì“–‚½‚è”»’è
+//æ•µã®å½“ãŸã‚Šåˆ¤å®š
 #define E_RANGE0 10
-//ƒ{ƒX‚Ì“–‚½‚è”»’è
+//ãƒœã‚¹ã®å½“ãŸã‚Šåˆ¤å®š
 #define B_RANGE0 20
 
-//‰~Žü—¦
+//å††å‘¨çŽ‡
 #define PI 3.14159265358979323846
 
-//ƒQ[ƒ€ƒpƒbƒh‚Ìƒ{ƒ^ƒ“”
+//ã‚²ãƒ¼ãƒ ãƒ‘ãƒƒãƒ‰ã®ãƒœã‚¿ãƒ³æ•°
 #define PAD_MAX 16
 
 #define WHITE GetColor(255, 255, 255)

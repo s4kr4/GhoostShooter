@@ -1,11 +1,11 @@
 #include "pch.h"
 #include "key.h"
 
-//ƒL[‚Æƒpƒbƒh‚Ì‚¤‚¿“ü—Í‚Ì’·‚¢•û‚ğ‘ã“ü
+//ã‚­ãƒ¼ã¨ãƒ‘ãƒƒãƒ‰ã®ã†ã¡å…¥åŠ›ã®é•·ã„æ–¹ã‚’ä»£å…¥
 #define InputState(pad, key) ((pad) > (key) ? (pad) : (key))
 
 KEY::KEY(){
-	//ƒL[ƒ{[ƒh
+	//ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰
 	key_cfg.down = KEY_INPUT_DOWN;
 	key_cfg.left = KEY_INPUT_LEFT;
 	key_cfg.right = KEY_INPUT_RIGHT;
@@ -18,12 +18,12 @@ KEY::KEY(){
 	key_cfg.skip[0] = KEY_INPUT_RCONTROL;
 	key_cfg.skip[1] = KEY_INPUT_LCONTROL;
 
-	//ƒRƒ“ƒtƒBƒO“Ç‚İ‚İ
+	//ã‚³ãƒ³ãƒ•ã‚£ã‚°èª­ã¿è¾¼ã¿
 	int cfg_n[9] = {};
 	FILE *key_fp;
 
 	if(error = fopen_s(&key_fp, "key.dat", "rb") != 0){
-		MessageBox(NULL, "ƒRƒ“ƒtƒBƒO“Ç¸”s", "Œx", 0);
+		MessageBox(NULL, "ã‚³ãƒ³ãƒ•ã‚£ã‚°èª­è¾¼å¤±æ•—", "è­¦å‘Š", 0);
 	}
 
 	fread(cfg_n, sizeof(cfg_n), 1, key_fp);
@@ -48,7 +48,7 @@ KEY::KEY(){
 	}
 }
 
-//ƒRƒ“ƒtƒBƒO‚ğdat‚Éo—Í
+//ã‚³ãƒ³ãƒ•ã‚£ã‚°ã‚’datã«å‡ºåŠ›
 void KEY::WriteDat(){
 	FILE *key_fp;
 
@@ -64,30 +64,30 @@ void KEY::WriteDat(){
 	cfg_n[8] = skip_n;
 
 	if(error = fopen_s(&key_fp, "key.dat", "wb") != 0){
-		MessageBox(NULL, "ƒRƒ“ƒtƒBƒO‘¸”s", "Œx", 0);
+		MessageBox(NULL, "ã‚³ãƒ³ãƒ•ã‚£ã‚°æ›¸è¾¼å¤±æ•—", "è­¦å‘Š", 0);
 	}
 	fwrite(cfg_n, sizeof(cfg_n), 1, key_fp);
 	fclose(key_fp);
 }
 
-//ƒL[“ü—ÍƒtƒŒ[ƒ€”‚ğ•Ô‚·
+//ã‚­ãƒ¼å…¥åŠ›ãƒ•ãƒ¬ãƒ¼ãƒ æ•°ã‚’è¿”ã™
 int KEY::GetInputKey(int hndl){
 	return KeyInput[hndl];
 }
 
-//ƒpƒbƒh“ü—ÍƒtƒŒ[ƒ€”‚ğ•Ô‚·
+//ãƒ‘ãƒƒãƒ‰å…¥åŠ›ãƒ•ãƒ¬ãƒ¼ãƒ æ•°ã‚’è¿”ã™
 int KEY::GetInputPad(int hndl){
 	return PadInput[hndl];
 }
 
-//ƒL[ƒRƒ“ƒtƒBƒOİ’è
-//•ÏX‚µ‚½‚¢btn‚Ì”Ô†‚ğw’è‚·‚é‚ÆA‰Ÿ‚µ‚½btn”Ô†‚ª‘ã“ü‚³‚ê‚é
-//btn‚É‚È‚É‚àw’è‚µ‚È‚¢ê‡Ahndl‚Éw’è‚³‚ê‚½ƒ{ƒ^ƒ“‚ÉŒ³X‘Î‰‚µ‚Ä‚¢‚½ƒpƒbƒh”Ô†‚ğ•Ô‚·
+//ã‚­ãƒ¼ã‚³ãƒ³ãƒ•ã‚£ã‚°è¨­å®š
+//å¤‰æ›´ã—ãŸã„btnã®ç•ªå·ã‚’æŒ‡å®šã™ã‚‹ã¨ã€æŠ¼ã—ãŸbtnç•ªå·ãŒä»£å…¥ã•ã‚Œã‚‹
+//btnã«ãªã«ã‚‚æŒ‡å®šã—ãªã„å ´åˆã€hndlã«æŒ‡å®šã•ã‚ŒãŸãƒœã‚¿ãƒ³ã«å…ƒã€…å¯¾å¿œã—ã¦ã„ãŸãƒ‘ãƒƒãƒ‰ç•ªå·ã‚’è¿”ã™
 int KEY::SetConfig(int *hndl, int btn){
 	if(btn != -1){
 		for(int i=0; i<PAD_MAX; i++){
 			if(PadBuf & 1<<i){
-				//ã‰º¶‰EƒL[‚ª‘ã“ü‚³‚ê‚é‚Ì‚ğ‰ñ”ğ
+				//ä¸Šä¸‹å·¦å³ã‚­ãƒ¼ãŒä»£å…¥ã•ã‚Œã‚‹ã®ã‚’å›é¿
 				if(i != 0 && i != 1 && i != 2 && i != 3){
 					*hndl = i;
 					switch(btn){
@@ -115,7 +115,7 @@ int KEY::SetConfig(int *hndl, int btn){
 	return *hndl;
 }
 
-//ƒL[Eƒpƒbƒh‚Ì“ü—ÍƒtƒŒ[ƒ€”‚ğŒvZ
+//ã‚­ãƒ¼ãƒ»ãƒ‘ãƒƒãƒ‰ã®å…¥åŠ›ãƒ•ãƒ¬ãƒ¼ãƒ æ•°ã‚’è¨ˆç®—
 void KEY::CheckInputFrame(){
 	for(int i=0; i<256; i++){
 		if(KeyBuf[i] == 1){
@@ -134,9 +134,9 @@ void KEY::CheckInputFrame(){
 	}
 }
 
-//ŠeƒL[Š„‚è“–‚Ä
+//å„ã‚­ãƒ¼å‰²ã‚Šå½“ã¦
 void KEY::SetInputState(){
-	//GetInputPad, GetInputKey‚ÅƒpƒbƒhEƒL[‚Ì“ü—ÍŠÔ‚ğ—¼•ûæ“¾A’·‚¢•û‚ğ‘ã“ü
+	//GetInputPad, GetInputKeyã§ãƒ‘ãƒƒãƒ‰ãƒ»ã‚­ãƒ¼ã®å…¥åŠ›æ™‚é–“ã‚’ä¸¡æ–¹å–å¾—ã€é•·ã„æ–¹ã‚’ä»£å…¥
 	down = InputState(GetInputPad(pad_cfg.down), GetInputKey(key_cfg.down));
 	left = InputState(GetInputPad(pad_cfg.left), GetInputKey(key_cfg.left));
 	right = InputState(GetInputPad(pad_cfg.right), GetInputKey(key_cfg.right));
@@ -149,7 +149,7 @@ void KEY::SetInputState(){
 			InputState(GetInputPad(pad_cfg.skip[0]), GetInputKey(key_cfg.skip[0])) : InputState(GetInputPad(pad_cfg.skip[0]), GetInputKey(key_cfg.skip[1]));
 	esc = InputState(GetInputPad(pad_cfg.esc), GetInputKey(key_cfg.esc));
 
-	//ˆÚ“®ƒL[ˆÈŠO‚Ì‚Ç‚Ìƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚Ä‚àany‚ğ‘‰Á(Push Any Key)
+	//ç§»å‹•ã‚­ãƒ¼ä»¥å¤–ã®ã©ã®ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚Œã¦ã‚‚anyã‚’å¢—åŠ (Push Any Key)
 	if(shot || bom || slow || skip || esc){
 		any++;
 	}else{

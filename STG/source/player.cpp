@@ -19,25 +19,25 @@ PLAYER::PLAYER(){
 	p_kill_num = 0;
 	b_kill_num = 0;
 	
-	//©‹@‰æ‘œ
+	//è‡ªæ©Ÿç”»åƒ
 	LoadDivGraph("img/player.png", 9, 3, 3, 128, 128, img);
 	LoadDivGraph("img/thunder.png", 2, 2, 1, 150, 150, thunder_img);
 	l_img = LoadGraph("img/l_speed.png");
 
-	//©‹@ƒVƒ‡ƒbƒg‰æ‘œ
+	//è‡ªæ©Ÿã‚·ãƒ§ãƒƒãƒˆç”»åƒ
 	s_img[0] = LoadGraph("img/p_shot3.png");
 	s_img[1] = LoadGraph("img/p_shot1.png");
 
-	//ƒ{ƒ€‰æ‘œ
+	//ãƒœãƒ ç”»åƒ
 	b_img[0] = LoadGraph("img/bom0.png");
 	b_img[1] = LoadGraph("img/bom1.png");
 
-	//©‹@ƒVƒ‡ƒbƒg‰¹
+	//è‡ªæ©Ÿã‚·ãƒ§ãƒƒãƒˆéŸ³
 	s_snd[0] = LoadSoundMem("sound/p_shot0.wav");
 	s_snd[1] = LoadSoundMem("sound/p_shot1.wav");
 	d_snd = LoadSoundMem("sound/dead.mp3");
 
-	//©‹@ƒVƒ‡ƒbƒg‰Šú‰»
+	//è‡ªæ©Ÿã‚·ãƒ§ãƒƒãƒˆåˆæœŸåŒ–
 	for(int i=0; i<PSHOT_MAX; i++){
 		p_shot[i].x = 0;
 		p_shot[i].y = 0;
@@ -51,7 +51,7 @@ PLAYER::PLAYER(){
 }
 
 void PLAYER::Parameter(){
-	//“G‚ğ3‘Ì“|‚·‚²‚Æ‚É1ƒpƒ[ƒAƒbƒv(MAX:10)A10‘Ì“|‚·‚²‚Æ‚É1ƒ{ƒ€ƒQƒbƒg(MAX:3)
+	//æ•µã‚’3ä½“å€’ã™ã”ã¨ã«1ãƒ‘ãƒ¯ãƒ¼ã‚¢ãƒƒãƒ—(MAX:10)ã€10ä½“å€’ã™ã”ã¨ã«1ãƒœãƒ ã‚²ãƒƒãƒˆ(MAX:3)
 	if(pwr < 10 && p_kill_num%3 == 0 && p_kill_num != 0){
 		pwr++;
 		p_kill_num = 0;
@@ -69,7 +69,7 @@ void PLAYER::Parameter(){
 		level = 1;
 	}
 
-	//€‚ñ‚Å‚©‚ç80ƒtƒŒ[ƒ€Œã‚É•œ‹A
+	//æ­»ã‚“ã§ã‹ã‚‰80ãƒ•ãƒ¬ãƒ¼ãƒ å¾Œã«å¾©å¸°
 	if(d_flag){
 		if(cntr == 80){
 			x = P_INIX;
@@ -93,13 +93,13 @@ void PLAYER::Move(){
 		if(key.down) down = true;
 		if(key.up) up = true;
 
-		//’á‘¬ƒL[‚Å‘¬“x•ÏX
+		//ä½é€Ÿã‚­ãƒ¼ã§é€Ÿåº¦å¤‰æ›´
 		if(key.slow){
 			spd = P_SPD_L;
 		}else{
 			spd = P_SPD;
 		}
-		//Î‚ßˆÚ“®‚Ì‘¬“x’²®
+		//æ–œã‚ç§»å‹•ã®é€Ÿåº¦èª¿æ•´
 		if((right || left) && (down || up)) spd /= 1.41f;
 
 		if(right && x < F_HMAX-15) x += spd;
@@ -114,7 +114,7 @@ void PLAYER::Shot(){
 	KEY &key = KEY::GetInstance();
 
 	if(flag){
-		//5ƒtƒŒ[ƒ€‚²‚Æ‚É’e”­Ë
+		//5ãƒ•ãƒ¬ãƒ¼ãƒ ã”ã¨ã«å¼¾ç™ºå°„
 		if(s_cntr%5 == 0 && key.shot){
 			switch(level){
 			case 3:
@@ -137,7 +137,7 @@ void PLAYER::Shot(){
 			srand((unsigned int)time(NULL));
 		}
 
-		//ƒ{ƒ€
+		//ãƒœãƒ 
 		if(b_flag){
 			SetPs(x, y, 20, (-60-rand()%60)*PI/180, 20, 3, b_img[0]);
 			SetPs(x, y, 20, (-60-rand()%60)*PI/180, 20, 3, b_img[0]);
@@ -152,12 +152,12 @@ void PLAYER::Shot(){
 		}
 	}
 
-	//’e‚ği‚ß‚é
+	//å¼¾ã‚’é€²ã‚ã‚‹
 	for(int i=0; i<PSHOT_MAX; i++){
 		if(p_shot[i].flag){
 			p_shot[i].x += p_shot[i].spd*cos(p_shot[i].angle);
 			p_shot[i].y += p_shot[i].spd*sin(p_shot[i].angle);
-			//‰æ–ÊŠOˆ—
+			//ç”»é¢å¤–å‡¦ç†
 			if(p_shot[i].x < F_HMIN-10 || p_shot[i].x > F_HMAX+10 || 
 				p_shot[i].y < F_VMIN-10 || p_shot[i].y > F_VMAX+10){
 				p_shot[i].flag = false;
@@ -169,16 +169,16 @@ void PLAYER::Shot(){
 
 void PLAYER::Draw(){
 	KEY &key = KEY::GetInstance();
-	//©‹@ƒVƒ‡ƒbƒg•`‰æ
+	//è‡ªæ©Ÿã‚·ãƒ§ãƒƒãƒˆæç”»
 	for(int i=0; i<PSHOT_MAX; i++){
 		if(p_shot[i].flag){
 				DrawRotaGraphF((float)p_shot[i].x, (float)p_shot[i].y, 1.0, p_shot[i].angle+(90*PI/180), p_shot[i].img, TRUE);
 		}
 	}
 
-	//©‹@•`‰æ
+	//è‡ªæ©Ÿæç”»
 	if(flag){
-		//‚Ç‚Ì‰æ‘œ‚ğ•\¦‚·‚é‚©
+		//ã©ã®ç”»åƒã‚’è¡¨ç¤ºã™ã‚‹ã‹
 		int img_n;
 
 		if(key.right){
@@ -189,31 +189,31 @@ void PLAYER::Draw(){
 			img_n = cntr%30/10;
 		}
 
-		//€‚ñ‚¾‚©ƒ{ƒ€‚©‚Å“_–Å
+		//æ­»ã‚“ã ã‹ãƒœãƒ ã‹ã§ç‚¹æ»…
 		if(d_flag || b_flag) if(cntr%10 == 0) SetDrawBright(0, 0, 0);
 
-		//’Êí
+		//é€šå¸¸æ™‚
 		DrawRotaGraphF((float)x, (float)y, 0.45, 0.0, img[img_n], TRUE);
 		DrawRotaGraphF((float)x, (float)y, 0.45, 0.0, thunder_img[cntr%14/7], TRUE);
 		SetDrawBright(255, 255, 255);
 
-		//’á‘¬ˆÚ“®’†
+		//ä½é€Ÿç§»å‹•ä¸­
 		if(key.slow){
-			//“–‚½‚è”»’è‚Ì•\¦
+			//å½“ãŸã‚Šåˆ¤å®šã®â—è¡¨ç¤º
 			DrawRotaGraphF((float)x, (float)y, 1.0, 0.0, l_img, TRUE);
 			SetDrawBlendMode(DX_BLENDMODE_ALPHA, 50);
 		}
-		//ƒpƒ[ƒIƒvƒVƒ‡ƒ“
+		//ãƒ‘ãƒ¯ãƒ¼ã‚ªãƒ—ã‚·ãƒ§ãƒ³
 		for(int i=0; i<pwr; i++){
 			DrawBox((int)x+18, (int)y+19-(i*4), (int)x+22, (int)y+22-(i*4), GetColor(255, 0, 0), TRUE);
 		}
-		//ƒ{ƒ€ƒIƒvƒVƒ‡ƒ“
+		//ãƒœãƒ ã‚ªãƒ—ã‚·ãƒ§ãƒ³
 		for(int i=0; i<bom; i++){
 			DrawBox((int)x-22, (int)y+10-(i*13), (int)x-18, (int)y+22-(i*13), GetColor(0, 255, 0), TRUE);
 		}
 		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 	}else{
-		//€–SƒGƒtƒFƒNƒg
+		//æ­»äº¡ã‚¨ãƒ•ã‚§ã‚¯ãƒˆ
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, int(255-0.159375*cntr*cntr));
 		DrawRotaGraphF((float)x, (float)y, cntr*0.2+0.5, 0.0, img[0], TRUE);
 		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
@@ -236,7 +236,7 @@ void PLAYER::SetPs(double x, double y, double spd, double angle, double range, d
 	}
 }
 
-//©‹@ˆÊ’u‚ğ•Ô‚·
+//è‡ªæ©Ÿä½ç½®ã‚’è¿”ã™
 bool PLAYER::GetPosition(double *x, double *y){
 	if(this->flag){
 		*x = this->x;
@@ -247,14 +247,14 @@ bool PLAYER::GetPosition(double *x, double *y){
 	}
 }
 
-//©‹@î•ñ‚ğ•Ô‚·
+//è‡ªæ©Ÿæƒ…å ±ã‚’è¿”ã™
 void PLAYER::GetInfo(int *level, int *life, int *score){
 	*level = this->level;
 	*life = this->life;
 	*score = this->score;
 }
 
-//©‹@ƒVƒ‡ƒbƒgî•ñ‚ğ•Ô‚·
+//è‡ªæ©Ÿã‚·ãƒ§ãƒƒãƒˆæƒ…å ±ã‚’è¿”ã™
 bool PLAYER::GetShotInfo(int i, double *x, double *y, double *atk, double *range){
 	if(p_shot[i].flag){
 		*x = p_shot[i].x;
@@ -267,7 +267,7 @@ bool PLAYER::GetShotInfo(int i, double *x, double *y, double *atk, double *range
 	}
 }
 
-//©‹@ƒtƒ‰ƒO‚Ì‘€ì(‘æˆêˆø”0:ƒtƒ‰ƒO‚ğ•Ô‚·A1:ƒtƒ‰ƒO‚ğ•ÏX‚µ‚Ä•Ô‚·)
+//è‡ªæ©Ÿãƒ•ãƒ©ã‚°ã®æ“ä½œ(ç¬¬ä¸€å¼•æ•°0:ãƒ•ãƒ©ã‚°ã‚’è¿”ã™ã€1:ãƒ•ãƒ©ã‚°ã‚’å¤‰æ›´ã—ã¦è¿”ã™)
 bool PLAYER::CtrlFlag(int num, bool flag){
 	switch(num){
 	case 0:
@@ -283,7 +283,7 @@ bool PLAYER::CtrlFlag(int num, bool flag){
 	return this->flag;
 }
 
-//©‹@ƒ_ƒ[ƒWƒtƒ‰ƒO‚Ì‘€ì(‘æˆêˆø”0:ƒtƒ‰ƒO‚ğ•Ô‚·A1:ƒtƒ‰ƒO‚ğ•ÏX‚µ‚Ä•Ô‚·)
+//è‡ªæ©Ÿãƒ€ãƒ¡ãƒ¼ã‚¸ãƒ•ãƒ©ã‚°ã®æ“ä½œ(ç¬¬ä¸€å¼•æ•°0:ãƒ•ãƒ©ã‚°ã‚’è¿”ã™ã€1:ãƒ•ãƒ©ã‚°ã‚’å¤‰æ›´ã—ã¦è¿”ã™)
 bool PLAYER::CtrlDmgFlag(int num, bool flag){
 	switch(num){
 	case 0:
@@ -299,12 +299,12 @@ bool PLAYER::GetBomFlag(){
 	return b_flag;
 }
 
-//ƒ_ƒ[ƒWƒJƒEƒ“ƒ^[‚ğ•Ô‚·
+//ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚«ã‚¦ãƒ³ã‚¿ãƒ¼ã‚’è¿”ã™
 int PLAYER::GetCntr(){
 	return this->cntr;
 }
 
-//ƒGƒ“ƒhƒtƒ‰ƒO‚ğƒ`ƒFƒbƒN
+//ã‚¨ãƒ³ãƒ‰ãƒ•ãƒ©ã‚°ã‚’ãƒã‚§ãƒƒã‚¯
 bool PLAYER::CheckEndFlag(){
 	if(this->life < 0){
 		this->end_flag = true;
@@ -312,29 +312,29 @@ bool PLAYER::CheckEndFlag(){
 	return end_flag;
 }
 
-//©‹@ƒVƒ‡ƒbƒgƒtƒ‰ƒO•ÏX
+//è‡ªæ©Ÿã‚·ãƒ§ãƒƒãƒˆãƒ•ãƒ©ã‚°å¤‰æ›´
 void PLAYER::ChangeShotFlag(int i, bool flag){
 	this->p_shot[i].flag = flag;
 }
 
-//“|‚µ‚½”‚ğ‚©‚¼‚¦‚é
+//å€’ã—ãŸæ•°ã‚’ã‹ããˆã‚‹
 void PLAYER::ChangeKillNum(int num){
 	this->p_kill_num += num;
 	this->b_kill_num += num;
 }
 
-//ƒpƒ[ŒvZ
+//ãƒ‘ãƒ¯ãƒ¼è¨ˆç®—
 void PLAYER::ChangePwr(int pwr){
 	this->pwr += pwr;
 	if(this->pwr < 1) this->pwr = 1;
 }
 
-//ƒXƒRƒAŒvZ
+//ã‚¹ã‚³ã‚¢è¨ˆç®—
 void PLAYER::ChangeScore(int score){
 	this->score += score;
 }
 
-//c‹@ŒvZ
+//æ®‹æ©Ÿè¨ˆç®—
 void PLAYER::ChangeLife(int life){
 	this->life += life;
 }

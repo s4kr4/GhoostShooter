@@ -92,7 +92,7 @@ BOSS::BOSS(double x, double y, int first, int second, int third, int fourth, int
 	LoadDivGraph("img/burn.bmp", 16, 8, 2, 80, 80, d_img);
 }
 
-//ó‘ÔŠÇ—
+//çŠ¶æ…‹ç®¡ç†
 void BOSS::CtrlPhase(){
 	CONTROL &control = CONTROL::GetInstance();
 
@@ -110,7 +110,7 @@ void BOSS::CtrlPhase(){
 	cntr++;
 }
 
-//“®‚«•û‚ğ•Ï‚¦‚é
+//å‹•ãæ–¹ã‚’å¤‰ãˆã‚‹
 void BOSS::ChangePhase(int ptrn){
 	this->ptrn = ptrn;
 	IniS();
@@ -120,12 +120,12 @@ void BOSS::ChangePhase(int ptrn){
 	}
 }
 
-//HPŒvZ
+//HPè¨ˆç®—
 void BOSS::ChangeHP(double psatk){
 	hp -= (psatk - def);
 
-	//HP0‚Å’e–‹5‚ÂI‚í‚Á‚½‚çd_flag—§‚Ä‚é
-	//I‚í‚Á‚Ä‚È‚¯‚ê‚ÎŸ‚Ì’e–‹‚Ö
+	//HP0ã§å¼¾å¹•5ã¤çµ‚ã‚ã£ãŸã‚‰d_flagç«‹ã¦ã‚‹
+	//çµ‚ã‚ã£ã¦ãªã‘ã‚Œã°æ¬¡ã®å¼¾å¹•ã¸
 	if(hp <= 0){
 		spell_n++;
 		if(spell_n == 5){
@@ -138,7 +138,7 @@ void BOSS::ChangeHP(double psatk){
 	}
 }
 
-//•`‰æ
+//æç”»
 void BOSS::Draw(){
 	if(flag) DrawRotaGraphF((float)x, (float)y, 1.0, 0.0, img, TRUE);
 
@@ -148,7 +148,7 @@ void BOSS::Draw(){
 		}
 	}
 
-	//HPƒo[
+	//HPãƒãƒ¼
 	DrawBox(30, 30, int(30+400*hp/1000), 38, GetColor(255, 0, 0), TRUE);
 	
 	if(d_flag) DeadEf();
@@ -171,14 +171,14 @@ void BOSS::MoveAll(){
 	}
 }
 
-//w’è‚µ‚½À•W‚ÉˆÚ“®‚·‚é
+//æŒ‡å®šã—ãŸåº§æ¨™ã«ç§»å‹•ã™ã‚‹
 void BOSS::Move0(double dest_x, double dest_y){
 	if(angle == 0){
-		//’¼‘O‚ÌÀ•W
+		//ç›´å‰ã®åº§æ¨™
 		prev_x = x;
 		prev_y = y;
 
-		//–Ú“I’n‚Ö‚Ì‹——£
+		//ç›®çš„åœ°ã¸ã®è·é›¢
 		move_x = dest_x-x;
 		move_y = dest_y-y;
 	}
@@ -187,14 +187,14 @@ void BOSS::Move0(double dest_x, double dest_y){
 	x = prev_x + move_x*sin(angle*PI/180);
 	y = prev_y + move_y*sin(angle*PI/180);
 
-	//–Ú“I’n‚Ü‚ÅˆÚ“®‚µ‚½‚çƒVƒ‡ƒbƒg
+	//ç›®çš„åœ°ã¾ã§ç§»å‹•ã—ãŸã‚‰ã‚·ãƒ§ãƒƒãƒˆ
 	if(angle == 90){
 		angle = 0;
 		s_flag = true;
 	}
 }
 
-//‚»‚Ìê‚Å•Y‚¤
+//ãã®å ´ã§æ¼‚ã†
 void BOSS::Move1(){
 	angle += 2;
 	y += sin(angle*PI/180);
@@ -206,7 +206,7 @@ void BOSS::Move2(){
 void BOSS::Move3(){
 }
 
-//----------------------------------------------«ƒ{ƒX’e–‹«---------------------------------------------------
+//----------------------------------------------â†“ãƒœã‚¹å¼¾å¹•â†“---------------------------------------------------
 void BOSS::ShotAll(){
 	switch(ptrn){
 	case 0:
@@ -232,7 +232,7 @@ void BOSS::ShotAll(){
 		break;
 	}
 
-	//’e‚ği‚ß‚é
+	//å¼¾ã‚’é€²ã‚ã‚‹
 	if(flag){
 		for(int i=0; i<BSHOT_MAX; i++){
 			if(b_shot[i].flag){
@@ -240,7 +240,7 @@ void BOSS::ShotAll(){
 				b_shot[i].y += b_shot[i].spd*sin(b_shot[i].angle*PI/180);
 				b_shot[i].cntr++;
 
-				//‰æ–ÊŠOˆ—
+				//ç”»é¢å¤–å‡¦ç†
 				if(b_shot[i].x < F_HMIN-20 || b_shot[i].x > F_HMAX+20 ||
 					b_shot[i].y < F_VMIN-20 || b_shot[i].y > F_VMAX+20){
 					b_shot[i].flag = false;
@@ -251,7 +251,7 @@ void BOSS::ShotAll(){
 	s_cntr++;
 }
 
-//ƒVƒ‡ƒbƒg‚Ìî•ñ‚ğƒZƒbƒg
+//ã‚·ãƒ§ãƒƒãƒˆã®æƒ…å ±ã‚’ã‚»ãƒƒãƒˆ
 void BOSS::SetBs(double x, double y, double spd, double angle, int img, int ptrn){
 	for(int i=0; i<BSHOT_MAX; i++){
 		if(!b_shot[i].flag){
@@ -277,7 +277,7 @@ void BOSS::NWay(int way, int nshot, double spd, int img){
 	}
 }
 
-//‰QŠªƒVƒ‡ƒbƒg(num = ’e”, raise = ’e‚ÌŠp“x, spd = ƒXƒs[ƒh)
+//æ¸¦å·»ã‚·ãƒ§ãƒƒãƒˆ(num = å¼¾æ•°, raise = å¼¾ã®è§’åº¦, spd = ã‚¹ãƒ”ãƒ¼ãƒ‰)
 void BOSS::Shot0(int num, double raise, double spd){
 	static double angle = 0;
 	if(s_num < num){
@@ -294,9 +294,9 @@ void BOSS::Shot0(int num, double raise, double spd){
 	}
 }
 
-//‹È‚ª‚é—ñƒVƒ‡ƒbƒg(col = —ñ”, spd = ƒXƒs[ƒh)
+//æ›²ãŒã‚‹åˆ—ã‚·ãƒ§ãƒƒãƒˆ(col = åˆ—æ•°, spd = ã‚¹ãƒ”ãƒ¼ãƒ‰)
 void BOSS::Shot1(int col, double spd){
-	//’e‚Ì‰¡ŠÔŠu
+	//å¼¾ã®æ¨ªé–“éš”
 	double space = double(350/(col-1));
 
 	SetSAngle(s_cntr%180<90 ? s_cntr%90+45:135-s_cntr%90);
@@ -309,7 +309,7 @@ void BOSS::Shot1(int col, double spd){
 	}
 }
 
-//‚Î‚çT‚«ŒãA‰º‚É—‚¿‚é(num = ’e”, spd = Å‚ƒXƒs[ƒh)
+//ã°ã‚‰æ’’ãå¾Œã€ä¸‹ã«è½ã¡ã‚‹(num = å¼¾æ•°, spd = æœ€é«˜ã‚¹ãƒ”ãƒ¼ãƒ‰)
 void BOSS::Shot2(int num, double spd){
 	SetSAngle(90, 60);
 	SetSSpd(1, 60);
@@ -329,7 +329,7 @@ void BOSS::Shot2(int num, double spd){
 	}
 }
 
-//•z“s‚Á‚Û‚¢’e–‹(d = n•ûŒü, raise = ’e‚ğ‚¸‚ç‚·”{—¦)
+//å¸ƒéƒ½ã£ã½ã„å¼¾å¹•(d = næ–¹å‘, raise = å¼¾ã‚’ãšã‚‰ã™å€ç‡)
 void BOSS::Shot3(int d, double raise){
 	SetSSpd(0, 0, 60);
 	SetSSpd(1, 0, 120);
@@ -353,7 +353,7 @@ void BOSS::Shot3(int d, double raise){
 	}
 }
 
-//Œğ·’e
+//äº¤å·®å¼¾
 void BOSS::Shot4(int d, int num){
 	SetSSpd(0, num*10+30);
 	AddSAngle(40, num*10+30, 0, 1);
@@ -379,7 +379,7 @@ void BOSS::Shot4(int d, int num){
 	}
 }
 
-//col = —ñ”, odd = ©‹@‘_‚¢‚Ì—ñ”, d = ŒÅ’èn•ûˆÊ
+//col = åˆ—æ•°, odd = è‡ªæ©Ÿç‹™ã„ã®åˆ—æ•°, d = å›ºå®šnæ–¹ä½
 void BOSS::Shot5(int col, int odd, int d){
 	CONTROL &control = CONTROL::GetInstance();
 	double px, py;
@@ -396,7 +396,7 @@ void BOSS::Shot5(int col, int odd, int d){
 		s_angle =  360.0/(d-1);
 	}
 
-	//Å‰‚Éo‚·’e
+	//æœ€åˆã«å‡ºã™å¼¾
 	if(s_cntr == 30){
 		SetBs(40, 10, 6, 90, 0, 1);
 		SetBs(420, 10, 6, 90, 0, 1);
@@ -405,7 +405,7 @@ void BOSS::Shot5(int col, int odd, int d){
 		}
 	}
 
-	//n•ûˆÊ
+	//næ–¹ä½
 	if(s_cntr >= 100 && s_cntr%50 == 0){
 		for(int i=0; i<d; i++){
 			SetBs(40, 220, 1, i*s_angle, 2);
@@ -413,7 +413,7 @@ void BOSS::Shot5(int col, int odd, int d){
 		}
 	}
 
-	//©‹@‘_‚¢
+	//è‡ªæ©Ÿç‹™ã„
 	if(s_cntr >= 200 && s_cntr%25 == 0){
 		if(s_cntr == 200){
 			for(int i=0; i<odd; i++){
@@ -591,9 +591,9 @@ void BOSS::IniS(){
 	wait = false;
 }
 
-//----------------------------------------------ªƒ{ƒX’e–‹ª---------------------------------------------------
+//----------------------------------------------â†‘ãƒœã‚¹å¼¾å¹•â†‘---------------------------------------------------
 
-//€–SƒGƒtƒFƒNƒg
+//æ­»äº¡ã‚¨ãƒ•ã‚§ã‚¯ãƒˆ
 void BOSS::DeadEf(){
 	static int i = 5;
 	if(i == 5) srand((unsigned int)time(NULL));
@@ -608,7 +608,7 @@ void BOSS::DeadEf(){
 	if(i == 0) d_flag = false;
 }
 
-//w’è‚µ‚½ƒtƒŒ[ƒ€”‘Ò‹@
+//æŒ‡å®šã—ãŸãƒ•ãƒ¬ãƒ¼ãƒ æ•°å¾…æ©Ÿ
 bool BOSS::Wait(int frame){
 	this->wait = true;
 	w_cntr++;
@@ -620,7 +620,7 @@ bool BOSS::Wait(int frame){
 	return wait;
 }
 
-//ƒ{ƒXÀ•W‚ğ•Ô‚·
+//ãƒœã‚¹åº§æ¨™ã‚’è¿”ã™
 bool BOSS::GetPosition(double *x, double *y){
 	if(this->flag){
 		*x = this->x;
@@ -631,7 +631,7 @@ bool BOSS::GetPosition(double *x, double *y){
 	}
 }
 
-//ƒVƒ‡ƒbƒgÀ•W‚ğ•Ô‚·
+//ã‚·ãƒ§ãƒƒãƒˆåº§æ¨™ã‚’è¿”ã™
 bool BOSS::GetShotPosition(int i, double *x, double *y, double *range){
 	if(b_shot[i].flag){
 		*x = b_shot[i].x;
@@ -643,7 +643,7 @@ bool BOSS::GetShotPosition(int i, double *x, double *y, double *range){
 	}
 }
 
-//ƒ{ƒXƒVƒ‡ƒbƒg‚ÌŒÂ•Êƒtƒ‰ƒO‚ğ•ÏX
+//ãƒœã‚¹ã‚·ãƒ§ãƒƒãƒˆã®å€‹åˆ¥ãƒ•ãƒ©ã‚°ã‚’å¤‰æ›´
 void BOSS::ChangeShotFlag(int i, bool flag){
 	b_shot[i].flag = flag;
 }

@@ -8,7 +8,7 @@ class PLAYER{
 private:
 	double x, y;
 	double spd;
-	//¶€Aƒ_ƒ[ƒWˆ—’†AƒQ[ƒ€ƒI[ƒo[‚Ìƒtƒ‰ƒO
+	//ç”Ÿæ­»ã€ãƒ€ãƒ¡ãƒ¼ã‚¸å‡¦ç†ä¸­ã€ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼ã®ãƒ•ãƒ©ã‚°
 	bool flag, d_flag, end_flag;
 	bool b_flag;
 	int level;
@@ -20,7 +20,7 @@ private:
 
 	int img[9];
 	int thunder_img[2];
-	//’á‘¬‚É•\¦‚·‚é‰æ‘œ
+	//ä½é€Ÿæ™‚ã«è¡¨ç¤ºã™ã‚‹ç”»åƒ
 	int l_img;
 	int s_img[2];
 	int b_img[2];
@@ -32,7 +32,7 @@ private:
 	int s_cntr;
 	int b_cntr;
 
-	//ƒVƒ‡ƒbƒg\‘¢‘Ì
+	//ã‚·ãƒ§ãƒƒãƒˆæ§‹é€ ä½“
 	struct P_SHOT_t{
 		double x, y;
 		double spd;

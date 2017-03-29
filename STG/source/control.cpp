@@ -19,7 +19,7 @@ CONTROL::~CONTROL(){
 	delete key;
 }
 
-//ƒXƒe[ƒW‰Šú‰»
+//ã‚¹ãƒ†ãƒ¼ã‚¸åˆæœŸåŒ–
 void CONTROL::StageIni(){
 	game_cntr = 0;
 	e_num = e_max = 0;
@@ -68,15 +68,15 @@ void CONTROL::StageIni(){
 	memset(e_buf, 0, sizeof(e_buf));
 	memset(b_buf, 0, sizeof(b_buf));
 
-	//“Gƒf[ƒ^Aƒ{ƒXƒf[ƒ^“Ç‚İ‚İ
+	//æ•µãƒ‡ãƒ¼ã‚¿ã€ãƒœã‚¹ãƒ‡ãƒ¼ã‚¿èª­ã¿è¾¼ã¿
 	switch(stage_n){
 	case 1:
 		back->Stage1_Ini();
 		if(error = fopen_s(&e_fp, "edata/enemy.csv", "r") != 0){
-			MessageBox(NULL, "“Gƒf[ƒ^‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚Ü‚µ‚½", "Œx", 0);
+			MessageBox(NULL, "æ•µãƒ‡ãƒ¼ã‚¿ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ", "è­¦å‘Š", 0);
 		}
 		if(error = fopen_s(&b_fp, "edata/bossdata.csv", "r") != 0){
-			MessageBox(NULL, "ƒ{ƒXƒf[ƒ^‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚Ü‚µ‚½", "Œx", 0);
+			MessageBox(NULL, "ãƒœã‚¹ãƒ‡ãƒ¼ã‚¿ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ", "è­¦å‘Š", 0);
 		}
 		break;
 	case 2:
@@ -85,14 +85,14 @@ void CONTROL::StageIni(){
 		break;
 	}
 
-//--------------------------------“Gƒf[ƒ^“Ç‚İ‚İ--------------------------------
+//--------------------------------æ•µãƒ‡ãƒ¼ã‚¿èª­ã¿è¾¼ã¿--------------------------------
 	int col = 1;
 	int row = 0;
 
-	//ˆês–Ú”ò‚Î‚·
+	//ä¸€è¡Œç›®é£›ã°ã™
 	while(fgetc(e_fp) != '\n');
 	while(row<E_MAX){
-		//•¶š”»’è(‰üsorƒJƒ“ƒ}orEOF‚È‚çƒuƒŒƒCƒNA‚»‚êˆÈŠO‚È‚ç•¶š˜AŒ‹>>e_buf)
+		//æ–‡å­—åˆ¤å®š(æ”¹è¡Œorã‚«ãƒ³ãƒorEOFãªã‚‰ãƒ–ãƒ¬ã‚¤ã‚¯ã€ãã‚Œä»¥å¤–ãªã‚‰æ–‡å­—é€£çµ>>e_buf)
 		while(1){
 			c = fgetc(e_fp);
 			if(c == ',' || c == '\n' || c == EOF){
@@ -101,10 +101,10 @@ void CONTROL::StageIni(){
 				strcat(e_buf, (const char*)&c);
 			}
 		}
-		//EOF‚È‚ç“Ç‚İ‚İI—¹
+		//EOFãªã‚‰èª­ã¿è¾¼ã¿çµ‚äº†
 		if(c == EOF) break;
 
-		//—ñ‚É‚æ‚Á‚Ä”’l(e_buf)‚ğ‘ã“üA"u"‚Ìê‡‚Í‘O‚Ìƒf[ƒ^‚ğˆø‚«Œp‚®
+		//åˆ—ã«ã‚ˆã£ã¦æ•°å€¤(e_buf)ã‚’ä»£å…¥ã€"u"ã®å ´åˆã¯å‰ã®ãƒ‡ãƒ¼ã‚¿ã‚’å¼•ãç¶™ã
 		if(e_buf[0] == 'u'){
 			switch(col){
 			case 1: e_data[row].type = e_data[row-1].type; break;
@@ -145,11 +145,11 @@ void CONTROL::StageIni(){
 			}
 		}
 
-		//ƒoƒbƒtƒ@‰Šú‰»
+		//ãƒãƒƒãƒ•ã‚¡åˆæœŸåŒ–
 		memset(e_buf, 0, sizeof(e_buf));
 		col++;
 
-		//s‚ÌÅŒã‚Ü‚Å—ˆ‚½‚ç“Gƒf[ƒ^1‘Ì•ªì¬‚µAŸ‚Ìs‚Ö
+		//è¡Œã®æœ€å¾Œã¾ã§æ¥ãŸã‚‰æ•µãƒ‡ãƒ¼ã‚¿1ä½“åˆ†ä½œæˆã—ã€æ¬¡ã®è¡Œã¸
 		if(c == '\n'){
 			enemy[row] = new ENEMY(e_data[row].type, e_data[row].s_type, e_data[row].pattern, e_data[row].s_pattern, e_data[row].nshot, e_data[row].interval,
 				e_data[row].in_time, e_data[row].stop_time, e_data[row].shot_time, e_data[row].out_time, 
@@ -162,18 +162,18 @@ void CONTROL::StageIni(){
 
 	fclose(e_fp);
 
-//--------------------------------ƒ{ƒXƒf[ƒ^“Ç‚İ‚İ--------------------------------
+//--------------------------------ãƒœã‚¹ãƒ‡ãƒ¼ã‚¿èª­ã¿è¾¼ã¿--------------------------------
 	col = 1;
 	row = 0;
 
-	//ˆês–Ú”ò‚Î‚·
+	//ä¸€è¡Œç›®é£›ã°ã™
 	while(fgetc(b_fp) != '\n');
-	//ƒXƒe[ƒW”Ô†‚É‘Î‰‚µ‚½s‚Ü‚Å”ò‚Î‚·
+	//ã‚¹ãƒ†ãƒ¼ã‚¸ç•ªå·ã«å¯¾å¿œã—ãŸè¡Œã¾ã§é£›ã°ã™
 	for(row; row<stage_n-1; row++){
 		while(fgetc(b_fp) != '\n');
 	}
 	while(1){
-		//1ƒZƒ‹•ª“Ç‚İ‚İ
+		//1ã‚»ãƒ«åˆ†èª­ã¿è¾¼ã¿
 		while(1){
 			c = fgetc(b_fp);
 
@@ -184,7 +184,7 @@ void CONTROL::StageIni(){
 			}
 		}
 	
-		//—ñ‚É‚æ‚Á‚Ä”’l‚ğ‘ã“ü
+		//åˆ—ã«ã‚ˆã£ã¦æ•°å€¤ã‚’ä»£å…¥
 		switch(col){
 		case 1: b_data.x = double(atoi(b_buf)); break;
 		case 2: b_data.y = double(atoi(b_buf)); break;
@@ -199,7 +199,7 @@ void CONTROL::StageIni(){
 		}
 		if(c == '\n') break;
 
-		//ƒoƒbƒtƒ@‰Šú‰»
+		//ãƒãƒƒãƒ•ã‚¡åˆæœŸåŒ–
 		memset(b_buf, 0, sizeof(b_buf));
 		col++;
 	}
@@ -207,7 +207,7 @@ void CONTROL::StageIni(){
 	fclose(b_fp);
 }
 
-//ŒvZˆ—
+//è¨ˆç®—å‡¦ç†
 void CONTROL::Calc(){
 	KEY &key = KEY::GetInstance();
 
@@ -215,15 +215,15 @@ void CONTROL::Calc(){
 		pause_flag = true;
 	}
 
-	//”wŒi
+	//èƒŒæ™¯
 	back->Move();
 
-	//©‹@
+	//è‡ªæ©Ÿ
 	player->Parameter();
 	player->Move();
 	player->Shot();
 
-	//“G
+	//æ•µ
 	if(CtrlEnum(0) < e_max){
 		for(int i=0;i<e_max; i++){
 			if(enemy[i] != NULL){
@@ -240,16 +240,16 @@ void CONTROL::Calc(){
 	game_cntr++;
 }
 
-//•`‰æˆ—
+//æç”»å‡¦ç†
 void CONTROL::Draw(){
-	//ƒtƒB[ƒ‹ƒh
+	//ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰
 	back->DrawField();
 	
 	SetDrawMode(DX_DRAWMODE_BILINEAR);
-	//©‹@
+	//è‡ªæ©Ÿ
 	player->Draw();
 
-	//“G
+	//æ•µ
 	if(CtrlEnum(0) < e_max){
 		for(int i=0; i<e_max; i++){
 			if(enemy[i] != NULL && !enemy[i]->Draw()){
@@ -262,26 +262,26 @@ void CONTROL::Draw(){
 	}
 	SetDrawMode(DX_DRAWMODE_NEAREST);
 
-	//üˆÍ‚Ì”wŒi
+	//å‘¨å›²ã®èƒŒæ™¯
 	back->DrawSurround();
 }
 
-//ƒXƒ^[ƒg‰æ–Ê
+//ã‚¹ã‚¿ãƒ¼ãƒˆç”»é¢
 void CONTROL::Start(){
 	back->Title();
 }
 
-//ƒƒjƒ…[‰æ–Ê
+//ãƒ¡ãƒ‹ãƒ¥ãƒ¼ç”»é¢
 void CONTROL::Menu(){
 	back->Menu();
 }
 
-//ƒQ[ƒ€‰æ–Ê
+//ã‚²ãƒ¼ãƒ ç”»é¢
 void CONTROL::Game(){
 	if(!pause_flag){
 		this->Calc();
 		this->Draw();
-		//ƒ‰ƒCƒt‚ª–³‚­‚È‚Á‚½‚çƒQ[ƒ€ƒI[ƒo[‰æ–Ê‚Ö
+		//ãƒ©ã‚¤ãƒ•ãŒç„¡ããªã£ãŸã‚‰ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼ç”»é¢ã¸
 		if(player->CheckEndFlag()) func_state = 3;
 	}else{
 		this->Draw();
@@ -289,7 +289,7 @@ void CONTROL::Game(){
 	}
 }
 
-//ƒQ[ƒ€ƒI[ƒo[‰æ–Ê
+//ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼ç”»é¢
 void CONTROL::GameEnd(){
 	SaveData();
 	if(clear_flag){
@@ -299,28 +299,28 @@ void CONTROL::GameEnd(){
 	}
 }
 
-//e_num‚ğ‘‰Á‚µ‚Ä’l‚ğ•Ô‚·
+//e_numã‚’å¢—åŠ ã—ã¦å€¤ã‚’è¿”ã™
 int CONTROL::CtrlEnum(int num){
 	return e_num += num;
 }
 
-//ƒQ[ƒ€ƒJƒEƒ“ƒ^[‚ğ•Ô‚·
+//ã‚²ãƒ¼ãƒ ã‚«ã‚¦ãƒ³ã‚¿ãƒ¼ã‚’è¿”ã™
 int CONTROL::GetGameCntr(){
 	return game_cntr;
 }
 
-//ƒ|[ƒYƒtƒ‰ƒO•ÏX
+//ãƒãƒ¼ã‚ºãƒ•ãƒ©ã‚°å¤‰æ›´
 bool CONTROL::CtrlPauseFlag(bool flag){
 	return pause_flag = flag;
 }
 
-//ƒNƒŠƒAƒtƒ‰ƒO•ÏX
+//ã‚¯ãƒªã‚¢ãƒ•ãƒ©ã‚°å¤‰æ›´
 bool CONTROL::CtrlClearFlag(bool flag){
 	func_state = 3;
 	return clear_flag = flag;
 }
 
-//©‹@ˆÊ’u‚ğ‘¼ƒNƒ‰ƒX‚É•Ô‚·
+//è‡ªæ©Ÿä½ç½®ã‚’ä»–ã‚¯ãƒ©ã‚¹ã«è¿”ã™
 void CONTROL::GetPlayerPosition(double *x, double *y){
 	double px, py;
 	player->GetPosition(&px, &py);
@@ -329,7 +329,7 @@ void CONTROL::GetPlayerPosition(double *x, double *y){
 	*y = py;
 }
 
-//©‹@î•ñ‚ğ‘¼ƒNƒ‰ƒX‚É•Ô‚·
+//è‡ªæ©Ÿæƒ…å ±ã‚’ä»–ã‚¯ãƒ©ã‚¹ã«è¿”ã™
 void CONTROL::GetPlayerInfo(int *level, int *life, int *score){
 	int p_level, p_life, p_score;
 	player->GetInfo(&p_level, &p_life, &p_score);
@@ -339,7 +339,7 @@ void CONTROL::GetPlayerInfo(int *level, int *life, int *score){
 	*score = p_score;
 }
 
-//“GˆÊ’u‚ğ‘¼ƒNƒ‰ƒX‚É•Ô‚·
+//æ•µä½ç½®ã‚’ä»–ã‚¯ãƒ©ã‚¹ã«è¿”ã™
 bool CONTROL::GetEnemyPosition(int i, double *x, double *y){
 	double ex, ey;
 	
@@ -352,7 +352,7 @@ bool CONTROL::GetEnemyPosition(int i, double *x, double *y){
 	}
 }
 
-//“GƒVƒ‡ƒbƒgˆÊ’u‚ğ‘¼ƒNƒ‰ƒX‚É•Ô‚·
+//æ•µã‚·ãƒ§ãƒƒãƒˆä½ç½®ã‚’ä»–ã‚¯ãƒ©ã‚¹ã«è¿”ã™
 void CONTROL::GetEnemyShotPosition(int i, int j, double *x, double *y){
 	double esx, esy;
 
@@ -362,7 +362,7 @@ void CONTROL::GetEnemyShotPosition(int i, int j, double *x, double *y){
 	*y = esy;
 }
 
-//“–‚½‚è”»’è
+//å½“ãŸã‚Šåˆ¤å®š
 bool CONTROL::CollisionDetection(double range1, double range2, double x1, double y1, double x2, double y2){
 	if((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2) <= (range1+range2)*(range1+range2)){
 		return true;
@@ -371,18 +371,18 @@ bool CONTROL::CollisionDetection(double range1, double range2, double x1, double
 	}
 }
 
-//“¹’†“–‚½‚è”»’è
+//é“ä¸­å½“ãŸã‚Šåˆ¤å®š
 void CONTROL::CollisionAll_E(){
-	//©‹@E“G‚ÌÀ•W
+	//è‡ªæ©Ÿãƒ»æ•µã®åº§æ¨™
 	double px, py, ex, ey;
-	//©‹@E“G‚ÌƒVƒ‡ƒbƒgÀ•W
+	//è‡ªæ©Ÿãƒ»æ•µã®ã‚·ãƒ§ãƒƒãƒˆåº§æ¨™
 	double psx, psy, esx, esy;
-	//ƒVƒ‡ƒbƒg‚Ì‘å‚«‚³
+	//ã‚·ãƒ§ãƒƒãƒˆã®å¤§ãã•
 	double psr, esr;
-	//©‹@ƒVƒ‡ƒbƒg‚ÌˆĞ—Í
+	//è‡ªæ©Ÿã‚·ãƒ§ãƒƒãƒˆã®å¨åŠ›
 	double psatk;
 
-	//©’e‚Æ“G
+	//è‡ªå¼¾ã¨æ•µ
 	for(int i=0; i<e_max; i++){
 		if(enemy[i] != NULL && enemy[i]->GetPosition(&ex, &ey)){
 			for(int j=0; j<PSHOT_MAX; j++){
@@ -400,7 +400,7 @@ void CONTROL::CollisionAll_E(){
 		}
 	}
 
-	//“G’e‚Æ©‹@
+	//æ•µå¼¾ã¨è‡ªæ©Ÿ
 	if(player->GetPosition(&px, &py) && !player->GetBomFlag() && !player->CtrlDmgFlag(0)){
 		for(int i=0; i<e_max; i++){
 			if(enemy[i] != NULL){
@@ -419,7 +419,7 @@ void CONTROL::CollisionAll_E(){
 		}
 	}
 
-	//©‹@‚Æ“G
+	//è‡ªæ©Ÿã¨æ•µ
 	if(player->GetPosition(&px, &py) && !player->GetBomFlag() && !player->CtrlDmgFlag(0)){
 		for(int i=0; i<e_max; i++){
 			if(enemy[i] != NULL && enemy[i]->GetPosition(&ex, &ey)){
@@ -433,7 +433,7 @@ void CONTROL::CollisionAll_E(){
 		}
 	}
 
-	//“G’e‚ÉƒqƒbƒgŒãA40ƒtƒŒ[ƒ€‚Å’eÁ‚µ
+	//æ•µå¼¾ã«ãƒ’ãƒƒãƒˆå¾Œã€40ãƒ•ãƒ¬ãƒ¼ãƒ ã§å¼¾æ¶ˆã—
 	if(player->CtrlDmgFlag(0) && player->GetCntr() == 40){
 		for(int i=0; i<e_max; i++){
 			if(enemy[i] != NULL && enemy[i]->CtrlFlag(0)){
@@ -443,18 +443,18 @@ void CONTROL::CollisionAll_E(){
 	}
 }
 
-//ƒ{ƒX“–‚½‚è”»’è
+//ãƒœã‚¹å½“ãŸã‚Šåˆ¤å®š
 void CONTROL::CollisionAll_B(){
-	//©‹@Eƒ{ƒX‚ÌÀ•W
+	//è‡ªæ©Ÿãƒ»ãƒœã‚¹ã®åº§æ¨™
 	double px, py, bx, by;
-	//©‹@Eƒ{ƒX‚ÌƒVƒ‡ƒbƒgÀ•W
+	//è‡ªæ©Ÿãƒ»ãƒœã‚¹ã®ã‚·ãƒ§ãƒƒãƒˆåº§æ¨™
 	double psx, psy, bsx, bsy;
-	//ƒVƒ‡ƒbƒg‚Ì‘å‚«‚³
+	//ã‚·ãƒ§ãƒƒãƒˆã®å¤§ãã•
 	double psr, bsr;
-	//©‹@ƒVƒ‡ƒbƒg‚ÌˆĞ—Í
+	//è‡ªæ©Ÿã‚·ãƒ§ãƒƒãƒˆã®å¨åŠ›
 	double psatk;
 
-	//©’e‚Æƒ{ƒX
+	//è‡ªå¼¾ã¨ãƒœã‚¹
 	if(boss->GetPosition(&bx, &by)){
 		for(int i=0; i<PSHOT_MAX; i++){
 			if(player->GetShotInfo(i, &psx, &psy, &psatk, &psr)){
@@ -466,7 +466,7 @@ void CONTROL::CollisionAll_B(){
 			}
 		}
 	}
-	//ƒ{ƒX’e‚Æ©‹@
+	//ãƒœã‚¹å¼¾ã¨è‡ªæ©Ÿ
 	if(player->GetPosition(&px, &py) && !player->GetBomFlag() && !player->CtrlDmgFlag(0)){
 		for(int i=0; i<BSHOT_MAX; i++){
 			if(boss->GetShotPosition(i, &bsx, &bsy, &bsr)){
@@ -479,7 +479,7 @@ void CONTROL::CollisionAll_B(){
 			}
 		}
 	}
-	//©‹@‚Æƒ{ƒX
+	//è‡ªæ©Ÿã¨ãƒœã‚¹
 	if(player->GetPosition(&px, &py) && !player->GetBomFlag() && !player->CtrlDmgFlag(0)){
 		if(boss->GetPosition(&bx, &by)){
 			if(CollisionDetection(P_RANGE1, B_RANGE0, px, py, bx, by)){
@@ -498,17 +498,17 @@ void CONTROL::CollisionAll_B(){
 	}
 }
 
-//ƒL[“ü—Íó‘Ôæ“¾
+//ã‚­ãƒ¼å…¥åŠ›çŠ¶æ…‹å–å¾—
 void CONTROL::CheckKeyState(){
 	key->GetKeyState();
 }
 
-//ƒXƒRƒA‘‚«o‚µ
+//ã‚¹ã‚³ã‚¢æ›¸ãå‡ºã—
 void CONTROL::SaveData(){
 	int hiscore = 0;
 	FILE *score_fp;
 	if(error = fopen_s(&score_fp, "score.dat", "rb") != 0){
-		MessageBox(NULL, "score.dat“Ç¸”s", "Œx", 0);
+		MessageBox(NULL, "score.datèª­è¾¼å¤±æ•—", "è­¦å‘Š", 0);
 	}
 	fread(&hiscore, sizeof(hiscore), 1, score_fp);
 	fclose(score_fp);
@@ -518,19 +518,19 @@ void CONTROL::SaveData(){
 
 	if(p_score > hiscore){
 		if(error = fopen_s(&score_fp, "score.dat", "wb") != 0){
-			MessageBox(NULL, "score.dat“Ç¸”s", "Œx", 0);
+			MessageBox(NULL, "score.datèª­è¾¼å¤±æ•—", "è­¦å‘Š", 0);
 		}
 		fwrite(&p_score, sizeof(p_score), 1, score_fp);
 		fclose(score_fp);
 	}
 }
 
-//ƒXƒRƒA“Ç‚İ‚İ
+//ã‚¹ã‚³ã‚¢èª­ã¿è¾¼ã¿
 int CONTROL::ReadData(){
 	int hiscore;
 	FILE *score_fp;
 	if(error = fopen_s(&score_fp, "score.dat", "rb") != 0){
-		MessageBox(NULL, "score.dat“Ç¸”s", "Œx", 0);
+		MessageBox(NULL, "score.datèª­è¾¼å¤±æ•—", "è­¦å‘Š", 0);
 	}
 	fread(&hiscore, sizeof(hiscore), 1, score_fp);
 	fclose(score_fp);

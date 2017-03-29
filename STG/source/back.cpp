@@ -32,14 +32,14 @@ BACK::BACK(){
 	cfg_flag = false;
 }
 
-//ƒXƒe[ƒW1‰Šú‰»
+//ã‚¹ãƒ†ãƒ¼ã‚¸1åˆæœŸåŒ–
 void BACK::Stage1_Ini(){
 	CONTROL &control = CONTROL::GetInstance();
 	control.CtrlPauseFlag(false);
 	f_img = LoadGraph("img/field.png");
 }
 
-//ƒ^ƒCƒgƒ‹‰æ–Ê
+//ã‚¿ã‚¤ãƒˆãƒ«ç”»é¢
 void BACK::Title(){
 	KEY &key = KEY::GetInstance();
 	static int i = 0;
@@ -54,7 +54,7 @@ void BACK::Title(){
 	i++;
 }
 
-//ƒƒjƒ…[‰æ–Ê
+//ãƒ¡ãƒ‹ãƒ¥ãƒ¼ç”»é¢
 void BACK::Menu(){
 	CONTROL &control = CONTROL::GetInstance();
 	KEY &key = KEY::GetInstance();
@@ -81,7 +81,7 @@ void BACK::Menu(){
 			break;
 		}
 
-		//ƒJ[ƒ\ƒ‹ˆÚ“®
+		//ã‚«ãƒ¼ã‚½ãƒ«ç§»å‹•
 		if(key.down == 1){
 			menu_opt++;
 			PlaySoundMem(select, DX_PLAYTYPE_BACK);
@@ -93,20 +93,20 @@ void BACK::Menu(){
 			PlaySoundMem(select, DX_PLAYTYPE_BACK);
 		}
 
-		//‘I‘ð€–Ú‚É‚æ‚Á‚Äˆ—
+		//é¸æŠžé …ç›®ã«ã‚ˆã£ã¦å‡¦ç†
 		if(key.shot == 1){
 			PlaySoundMem(decide, DX_PLAYTYPE_BACK);
 			switch(menu_opt%3){
-			//ƒQ[ƒ€ƒXƒ^[ƒg
+			//ã‚²ãƒ¼ãƒ ã‚¹ã‚¿ãƒ¼ãƒˆ
 			case 0:
 				func_state = 2;
 				control.StageIni();
 				break;
-			//Ý’è‰æ–Ê‚Ö
+			//è¨­å®šç”»é¢ã¸
 			case 1:
 				cfg_flag = true;
 				break;
-			//I—¹
+			//çµ‚äº†
 			case 2:
 				func_state = 4;
 				break;
@@ -118,43 +118,43 @@ void BACK::Menu(){
 	}
 }
 
-//ƒL[ƒRƒ“ƒtƒBƒO‰æ–Ê
+//ã‚­ãƒ¼ã‚³ãƒ³ãƒ•ã‚£ã‚°ç”»é¢
 void BACK::Config(){
 	KEY &key = KEY::GetInstance();
 
-	DrawFormatString(100, 70, GetColor(255, 255, 255), "ƒL[ƒRƒ“ƒtƒBƒOÝ’è");
+	DrawFormatString(100, 70, GetColor(255, 255, 255), "ã‚­ãƒ¼ã‚³ãƒ³ãƒ•ã‚£ã‚°è¨­å®š");
 	SetDrawBright(100, 100, 100);
-	DrawFormatString(100, 100, GetColor(255, 255, 255), "ƒVƒ‡ƒbƒg   %02d", key.SetConfig(&key.shot_n));
-	DrawFormatString(100, 120, GetColor(255, 255, 255), "ƒ{ƒ€       %02d", key.SetConfig(&key.bom_n));
-	DrawFormatString(100, 140, GetColor(255, 255, 255), "’á‘¬       %02d", key.SetConfig(&key.slow_n));
-	DrawFormatString(100, 160, GetColor(255, 255, 255), "ƒXƒLƒbƒv   %02d", key.SetConfig(&key.skip_n));
-	DrawFormatString(100, 180, GetColor(255, 255, 255), "ˆêŽž’âŽ~   %02d", key.SetConfig(&key.esc_n));
-	DrawFormatString(100, 200, GetColor(255, 255, 255), "–ß‚é");
+	DrawFormatString(100, 100, GetColor(255, 255, 255), "ã‚·ãƒ§ãƒƒãƒˆ   %02d", key.SetConfig(&key.shot_n));
+	DrawFormatString(100, 120, GetColor(255, 255, 255), "ãƒœãƒ        %02d", key.SetConfig(&key.bom_n));
+	DrawFormatString(100, 140, GetColor(255, 255, 255), "ä½Žé€Ÿ       %02d", key.SetConfig(&key.slow_n));
+	DrawFormatString(100, 160, GetColor(255, 255, 255), "ã‚¹ã‚­ãƒƒãƒ—   %02d", key.SetConfig(&key.skip_n));
+	DrawFormatString(100, 180, GetColor(255, 255, 255), "ä¸€æ™‚åœæ­¢   %02d", key.SetConfig(&key.esc_n));
+	DrawFormatString(100, 200, GetColor(255, 255, 255), "æˆ»ã‚‹");
 
 	switch(cfg_opt%6){
 	case 0:
 		SetDrawBright(255, 255, 255);
-		DrawFormatString(100, 100, GetColor(255, 255, 255), "ƒVƒ‡ƒbƒg   %02d", key.SetConfig(&key.shot_n, 0));
+		DrawFormatString(100, 100, GetColor(255, 255, 255), "ã‚·ãƒ§ãƒƒãƒˆ   %02d", key.SetConfig(&key.shot_n, 0));
 		break;
 	case 1:
 		SetDrawBright(255, 255, 255);
-		DrawFormatString(100, 120, GetColor(255, 255, 255), "ƒ{ƒ€       %02d", key.SetConfig(&key.bom_n, 1));
+		DrawFormatString(100, 120, GetColor(255, 255, 255), "ãƒœãƒ        %02d", key.SetConfig(&key.bom_n, 1));
 		break;
 	case 2:
 		SetDrawBright(255, 255, 255);
-		DrawFormatString(100, 140, GetColor(255, 255, 255), "’á‘¬       %02d", key.SetConfig(&key.slow_n, 2));
+		DrawFormatString(100, 140, GetColor(255, 255, 255), "ä½Žé€Ÿ       %02d", key.SetConfig(&key.slow_n, 2));
 		break;
 	case 3:
 		SetDrawBright(255, 255, 255);
-		DrawFormatString(100, 160, GetColor(255, 255, 255), "ƒXƒLƒbƒv   %02d", key.SetConfig(&key.skip_n, 3));
+		DrawFormatString(100, 160, GetColor(255, 255, 255), "ã‚¹ã‚­ãƒƒãƒ—   %02d", key.SetConfig(&key.skip_n, 3));
 		break;
 	case 4:
 		SetDrawBright(255, 255, 255);
-		DrawFormatString(100, 180, GetColor(255, 255, 255), "ˆêŽž’âŽ~   %02d", key.SetConfig(&key.esc_n, 4));
+		DrawFormatString(100, 180, GetColor(255, 255, 255), "ä¸€æ™‚åœæ­¢   %02d", key.SetConfig(&key.esc_n, 4));
 		break;
 	case 5:
 		SetDrawBright(255, 255, 255);
-		DrawFormatString(100, 200, GetColor(255, 255, 255), "–ß‚é");
+		DrawFormatString(100, 200, GetColor(255, 255, 255), "æˆ»ã‚‹");
 		if(key.shot){
 			cfg_opt = 0;
 			cfg_flag = false;
@@ -163,7 +163,7 @@ void BACK::Config(){
 		break;
 	}
 
-	//ƒJ[ƒ\ƒ‹ˆÚ“®
+	//ã‚«ãƒ¼ã‚½ãƒ«ç§»å‹•
 	if(key.down == 1){
 		cfg_opt++;
 	}else if(key.up == 1){
@@ -171,7 +171,7 @@ void BACK::Config(){
 	}
 }
 
-//ƒ|[ƒY‰æ–Ê
+//ãƒãƒ¼ã‚ºç”»é¢
 void BACK::Pause(){
 	CONTROL &control = CONTROL::GetInstance();
 	KEY &key = KEY::GetInstance();
@@ -199,7 +199,7 @@ void BACK::Pause(){
 	}
 	SetDrawBright(100, 100, 100);
 
-	//ƒJ[ƒ\ƒ‹ˆÚ“®
+	//ã‚«ãƒ¼ã‚½ãƒ«ç§»å‹•
 	if(key.down == 1){
 		pause_opt++;
 		PlaySoundMem(select, DX_PLAYTYPE_BACK);
@@ -208,26 +208,26 @@ void BACK::Pause(){
 		PlaySoundMem(select, DX_PLAYTYPE_BACK);
 	}
 
-	//ESCƒL[‚ÅˆêŽž’âŽ~‰ðœ
+	//ESCã‚­ãƒ¼ã§ä¸€æ™‚åœæ­¢è§£é™¤
 	if(key.esc == 1){
 		SetDrawBright(255, 255, 255);
 		pause_opt = 0;
 		control.CtrlPauseFlag(false);
 	}
 
-	//‘I‘ð€–Ú‚É‚æ‚Á‚Äˆ—
+	//é¸æŠžé …ç›®ã«ã‚ˆã£ã¦å‡¦ç†
 	if(key.shot == 1){
 		PlaySoundMem(decide, DX_PLAYTYPE_BACK);
 		switch(pause_opt%3){
-		//ˆêŽž’âŽ~‰ðœ
+		//ä¸€æ™‚åœæ­¢è§£é™¤
 		case 0:
 			break;
-		//ƒXƒe[ƒW‰Šú‰»AŽn‚ß‚©‚ç
+		//ã‚¹ãƒ†ãƒ¼ã‚¸åˆæœŸåŒ–ã€å§‹ã‚ã‹ã‚‰
 		case 1:
 			control.StageIni();
 			func_state = 2;
 			break;
-		//ƒ^ƒCƒgƒ‹‰æ–Ê‚Ö
+		//ã‚¿ã‚¤ãƒˆãƒ«ç”»é¢ã¸
 		case 2:
 			func_state = 0;
 			break;
@@ -238,7 +238,7 @@ void BACK::Pause(){
 	}
 }	
 
-//ƒQ[ƒ€ƒNƒŠƒA‰æ–Ê
+//ã‚²ãƒ¼ãƒ ã‚¯ãƒªã‚¢ç”»é¢
 void BACK::GameClear(){
 	KEY &key = KEY::GetInstance();
 	DrawRotaGraph(320, 100, 1.0, 0.0, gameclear_img, TRUE);
@@ -247,7 +247,7 @@ void BACK::GameClear(){
 	if(key.shot == 1) func_state = 0;
 }
 
-//ƒQ[ƒ€ƒI[ƒo[‰æ–Ê
+//ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼ç”»é¢
 void BACK::GameOver(){
 	KEY &key = KEY::GetInstance();
 	DrawRotaGraph(320, 100,1.0, 0.0, gameover_img, TRUE);
@@ -260,7 +260,7 @@ void BACK::Move(){
 	f_y += SCROLL_SPEED;
 }
 
-//ƒtƒB[ƒ‹ƒh”wŒi•`‰æ
+//ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰èƒŒæ™¯æç”»
 void BACK::DrawField(){
 	DrawGraph((int)f_x, (int)f_y, f_img, FALSE);
 	DrawGraph((int)f_x, (int)f_y-440, f_img, FALSE);
@@ -268,16 +268,16 @@ void BACK::DrawField(){
 	if(f_y == F_VMAX) f_y = F_VMIN;
 }
 
-//ƒXƒRƒAƒ{[ƒh“™•`‰æ
+//ã‚¹ã‚³ã‚¢ãƒœãƒ¼ãƒ‰ç­‰æç”»
 void BACK::DrawSurround(){
 	CONTROL &control = CONTROL::GetInstance();
 	control.GetPlayerInfo(&p_level, &p_life, &p_score);
 	int hiscore = control.ReadData();
 
-	//ŽüˆÍ‚Ì‰æ‘œ
+	//å‘¨å›²ã®ç”»åƒ
 	DrawGraph((int)b_x, (int)b_y, back_img, TRUE);
 
-	//‚»‚Ì‘¼‚Ìî•ñ•\Ž¦
+	//ãã®ä»–ã®æƒ…å ±è¡¨ç¤º
 	DrawFormatString(480, 30, WHITE, "HISCORE %08d", p_score > hiscore ? p_score : hiscore);
 	DrawFormatString(480, 50, WHITE, "SCORE   %08d", p_score);
 	DrawFormatString(480, 70, WHITE, "LIFE    %d", p_life);

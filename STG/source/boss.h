@@ -8,7 +8,7 @@ class BOSS{
 private:
 	double x, y;
 	double px, py;
-	//ˆÚ“®‚Ég‚¤À•W
+	//ç§»å‹•ã«ä½¿ã†åº§æ¨™
 	double prev_x, prev_y, move_x, move_y;
 	double spd, s_spd;
 	double s_range[10];
@@ -17,17 +17,17 @@ private:
 	int img, s_img[15], d_img[16];
 	double hp;
 	int s_snd[10];
-	//’e–‹‚Ìc‚è”
+	//å¼¾å¹•ã®æ®‹ã‚Šæ•°
 	int spell_n;
 	double def;
 	int spell[5];
 	int first, second, third, fourth, fifth;
 	int hp_f, hp_s, hp_t;
 	int item;
-	//ˆÚ“®‚Ég‚¤Šp“x
+	//ç§»å‹•ã«ä½¿ã†è§’åº¦
 	double angle;
 	
-	//’e–‹—p‚Ì”•Ï”
+	//å¼¾å¹•ç”¨ã®è«¸å¤‰æ•°
 	double s_angle;
 	double s_raise;
 	int s_cntr;
@@ -35,13 +35,13 @@ private:
 	int s_num;
 	bool wait;
 
-	//ƒtƒ‰ƒO
+	//ãƒ•ãƒ©ã‚°
 	bool flag;
-	//ƒVƒ‡ƒbƒgAƒVƒ‡ƒbƒg‰¹
+	//ã‚·ãƒ§ãƒƒãƒˆã€ã‚·ãƒ§ãƒƒãƒˆéŸ³
 	bool s_flag, shotsound_flag;
-	//“®‚«
+	//å‹•ã
 	bool m_flag;
-	//€–S
+	//æ­»äº¡
 	bool d_flag;
 
 	struct B_SHOT_t{

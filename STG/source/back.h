@@ -7,14 +7,14 @@
 class BACK{
 private:
 	double b_x, b_y, f_x, f_y;
-	//画像ハンドル
+	//逕ｻ蜒上ワ繝ｳ繝峨Ν
 	int back_img, f_img;
 	int title_img;
 	int menu_img, start_img, settings_img, exit_img;
 	int pause_img, restart_img, retry_img, gotitle_img;
 	int gameclear_img, gameover_img;
 
-	//音声ハンドル
+	//髻ｳ螢ｰ繝上Φ繝峨Ν
 	int select, decide;
 
 	int p_level, p_life, p_score;

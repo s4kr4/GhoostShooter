@@ -7,7 +7,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetMainWindowText("Shoot The Ghost!!!");
 
 	ChangeWindowMode(TRUE);
-	if(MessageBox(NULL, "‘S‰æ–Ê‚ÅƒvƒŒƒC‚µ‚½‚¢‚Å‚·‚©H", "¿–â", MB_YESNO) == IDYES){
+	if(MessageBox(NULL, "å…¨ç”»é¢ã§ãƒ—ãƒ¬ã‚¤ã—ãŸã„ã§ã™ã‹ï¼Ÿ", "è³ªå•", MB_YESNO) == IDYES){
 		ChangeWindowMode(FALSE);
 	}else{
 		ChangeWindowMode(TRUE);
@@ -18,7 +18,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	CONTROL &control = CONTROL::GetInstance();
 	KEY &key = KEY::GetInstance();
 
-	//----------------------------------------------------«ƒƒCƒ“ƒ‹[ƒv«-------------------------------------------------
+	//----------------------------------------------------â†“ãƒ¡ã‚¤ãƒ³ãƒ«ãƒ¼ãƒ—â†“-------------------------------------------------
 	while(ScreenFlip()==0 && ProcessMessage()==0 && ClearDrawScreen()==0 && key.GetKeyState()==0){
 		switch(func_state){
 		case 0:
@@ -39,7 +39,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			break;
 		}
 	}
-	//----------------------------------------------------ªƒƒCƒ“ƒ‹[ƒvª-------------------------------------------------
+	//----------------------------------------------------â†‘ãƒ¡ã‚¤ãƒ³ãƒ«ãƒ¼ãƒ—â†‘-------------------------------------------------
 
 	DxLib_End();
 	return 0;

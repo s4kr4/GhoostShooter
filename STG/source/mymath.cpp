@@ -4,7 +4,7 @@
 
 MyMath::MyMath(){}
 
-//ƒxƒWƒF‹Èü
+//ãƒ™ã‚¸ã‚§æ›²ç·š
 void MyMath::Bezier(double x, double y, int div, int cntr, double p0[], double p1[], double p2[],  double p3[], double *angle){
 
 	double u = (1.0/div)*cntr;

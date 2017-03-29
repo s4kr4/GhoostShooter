@@ -7,14 +7,14 @@
 
 class ENEMY{
 private:
-	//“GÀ•W
+	//æ•µåº§æ¨™
 	double x, y;
-	//©‹@À•W
+	//è‡ªæ©Ÿåº§æ¨™
 	double px, py;
-	//ŒÂ‘ÌAƒNƒ‰ƒXAˆÚ“®AƒVƒ‡ƒbƒgA€–S‚Ìƒtƒ‰ƒO
+	//å€‹ä½“ã€ã‚¯ãƒ©ã‚¹ã€ç§»å‹•ã€ã‚·ãƒ§ãƒƒãƒˆã€æ­»äº¡ã®ãƒ•ãƒ©ã‚°
 	bool flag, c_flag, m_flag, s_flag, d_flag;
 	int cntr, s_cntr, d_cntr;
-	//oŒ»A’â~AƒVƒ‡ƒbƒgA‹AŠÒ‚ÌŠÔ
+	//å‡ºç¾ã€åœæ­¢ã€ã‚·ãƒ§ãƒƒãƒˆã€å¸°é‚„ã®æ™‚é–“
 	int in_time, stop_time, shot_time, out_time;
 	int img[4], s_img, b_img[16];
 	int s_snd;
@@ -25,11 +25,11 @@ private:
 	double spd, s_spd;	
 	double hp;
 	int item;
-	//”­Ë’e”
+	//ç™ºå°„å¼¾æ•°
 	int nshot;
-	//”­ËŠÔŠu
+	//ç™ºå°„é–“éš”
 	int interval;
-	//‚Ç‚¿‚çŒü‚«‚©
+	//ã©ã¡ã‚‰å‘ãã‹
 	int course;
 
 	struct E_SHOT_t{

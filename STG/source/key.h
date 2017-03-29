@@ -25,9 +25,9 @@ private:
 	KEY();
 
 public:
-	//“ü—ÍƒtƒŒ[ƒ€”
+	//å…¥åŠ›ãƒ•ãƒ¬ãƒ¼ãƒ æ•°
 	int left, up, right, down, shot, bom, slow, esc, skip, any;
-	//btn”Ô†
+	//btnç•ªå·
 	int left_n, up_n, right_n, down_n, shot_n, bom_n, slow_n, skip_n, esc_n;
 
 	void WriteDat();
